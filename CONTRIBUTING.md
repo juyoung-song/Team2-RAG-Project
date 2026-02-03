@@ -21,13 +21,13 @@
 
 2. 정보 입력: Assignees에 담당자를 지정하고, 아래의 3가지 필수 레이블을 설정합니다.
 
-Type: 템플릿에 따라 자동 지정 (feat, bug, exp 등)
+- Type: 템플릿에 따라 지정
 
-Priority: 작업의 우선순위 (Urgent 시 팀 채널에 공유 필수!)
+- Priority: 작업의 우선순위 (Urgent 시 팀 채널에 공유 필수!)
 
-Status: Pending(대기), In Progress(진행 중), Completed(완료/닫기), Aborted(중단)
+- Status: Pending(대기), In Progress(진행 중), Completed(완료/닫기), Aborted(중단)
 
-작성 원칙: 너무 완벽하게 적으려 고생하지 마세요! 팀원이 이해할 수 있을 정도로 간단하고 핵심만 적어주셔도 충분합니다.
+3. 작성 원칙: 너무 완벽하게 적으려 고생하지 마세요! 팀원이 이해할 수 있을 정도로 간단하고 핵심만 적어주셔도 충분합니다.
 
 ---
 
