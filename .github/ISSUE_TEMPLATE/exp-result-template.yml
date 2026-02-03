@@ -9,7 +9,7 @@ body:
       label: "⚠️ Please check that similar experiments haven't been shared already."
       description: "This helps us avoid redundancy and keeps experiment records organized."
       options:
-        - label: "이전에 공유된 [실험들](https://github.com/boostcampaitech7/level4-nlp-finalproject-hackathon-nlp-06-lv3/issues?q=+is%3Aissue+label%3A%22Type%3A+Experiment%22+) 중 중복되는 것이 없습니다."
+        - label: "이전에 공유된 [실험들](https://github.com/juyoung-song/Team2-RAG-Project/issues?q=is%3Aissue+label%3A%22Type%3A+Experiment%22+) 중 중복되는 것이 없습니다."
           required: true
 
   - type: input

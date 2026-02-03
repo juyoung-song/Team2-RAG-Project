@@ -9,7 +9,7 @@ body:
       label: "⚠️ Please check for similar bug reports"
       description: "이미 보고된 버그 중 중복되는 것이 없는지 확인해 주세요."
       options:
-        - label: "이전에 보고된 [버그 리포트](https://github.com/boostcampaitech7/level4-nlp-finalproject-hackathon-nlp-06-lv3/issues?q=+is%3Aissue+label%3A%22Type%3A+Bug%22+) 중 중복되는 것이 없습니다."
+        - label: "이전에 보고된 [버그 리포트](https://github.com/juyoung-song/Team2-RAG-Project/issues?q=is%3Aissue+label%3A%22Type%3A+Bug%22+) 중 중복되는 것이 없습니다."
           required: true
 
   - type: textarea
