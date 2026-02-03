@@ -4,7 +4,7 @@
 
 ## 🔄 작업 프로세스 (Standard Workflow)
 
-1. **Issue 생성**: 작업할 내용을 [Issues] 탭에 템플릿에 맞춰 내용을 등록하고 담당자를 지정합니다.
+1. **Issue 생성**: 작업할 내용을 `[Issues]` 탭에 템플릿에 맞춰 내용을 등록하고 담당자를 지정합니다.
 2. **Branch 생성**: `dev` 브랜치에서 분기하여 기능 단위 브랜치를 만듭니다.
    - 형식: `feature/이슈번호-기능명` 또는 `fix/이슈번호-버그명` (예: `feature/12-ingestion-pdf`) 
 3. **코드 작성 및 커밋**: 로컬에서 작업 후 커밋 컨벤션에 맞춰 커밋을 남깁니다.
@@ -17,15 +17,15 @@
 
 ## 📝 이슈 생성 가이드 (How to Create an Issue)
 
-1. 템플릿 선택: Issues -> New issue에서 카테고리에 맞는 템플릿을 선택합니다.
+1. 템플릿 선택: **Issues -> New issue**에서 카테고리에 맞는 템플릿을 선택합니다.
 
-2. 정보 입력: Assignees에 담당자를 지정하고, 아래의 3가지 필수 레이블을 설정합니다.
+2. 정보 입력: **Assignees**에 담당자를 지정하고, 아래의 3가지 필수 레이블을 설정합니다.
 
-- Type: 템플릿에 따라 지정
+- **Type**: 템플릿에 따라 지정
 
-- Priority: 작업의 우선순위 (Urgent 시 팀 채널에 공유 필수!)
+- **Priority**: 작업의 우선순위 (`Urgent` 시 팀 채널에 공유 필수!)
 
-- Status: Pending(대기), In Progress(진행 중), Completed(완료/닫기), Aborted(중단)
+- **Status**: `Pending(대기)`, `In Progress(진행 중)`, `Completed(완료/닫기)`, `Aborted(중단)`
 
 3. 작성 원칙: 너무 완벽하게 적으려 고생하지 마세요! 팀원이 이해할 수 있을 정도로 간단하고 핵심만 적어주셔도 충분합니다.
 
