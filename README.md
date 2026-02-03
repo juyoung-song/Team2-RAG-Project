@@ -8,11 +8,11 @@
 
 | 팀원 | 역할 | 협업 일지 |
 | :---: | :--- | :---: |
-| <a href="https://github.com/juyoung-song"><img src="https://github.com/juyoung-song.png" width="80" title="송주영"></a> |. | <a href="여기에_송주영님_노션링크_입력"><img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white"></a> |
-| <a href="https://github.com/아이디2"><img src="https://github.com/아이디2.png" width="80" title="최무영"></a> | . | <a href="https://www.notion.so/23803752e5f9802fa345e748a399a184"><img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white"></a> |
-| <a href="https://github.com/아이디3"><img src="https://github.com/아이디3.png" width="80" title="황유민"></a> | . | <a href="https://www.notion.so/Daily-PCH-238ac8e1b95280adaa6fc701ef407b7e"><img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white"></a> |
-| <a href="https://github.com/아이디4"><img src="https://github.com/아이디4.png" width="80" title="구경준"></a> | . | <a href="https://www.notion.so/2-238816c91f3a80c880ffc05feccf53e8"><img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white"></a> |
-| <a href="https://github.com/아이디5"><img src="https://github.com/아이디5.png" width="80" title="서정언"></a> | . | <a href="https://www.notion.so/Daily-2382d05d9c468081a528f698cf580863"><img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white"></a> |
+| <a href="https://github.com/juyoung-song"><img src="https://github.com/juyoung-song.png" width="80" title="송주영"></a> |. | <a href="https://www.notion.so/Daily-2fc0ddb4d3a880818a84edc3a7799050?source=copy_link"><img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white"></a> |
+| <a href="https://github.com/choimuyeong"><img src="https://github.com/choimuyeong.png" width="80" title="최무영"></a> | . | <a href="https://www.notion.so/Daily-2fc0ddb4d3a88093a9b0d241ec496adb?source=copy_link"><img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white"></a> |
+| <a href="https://github.com/Yumin-Hwang046"><img src="https://github.com/Yumin-Hwang046.png" width="80" title="황유민"></a> | . | <a href="https://www.notion.so/Daily-2fc0ddb4d3a880888eb1c0232db60f0f?source=copy_link"><img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white"></a> |
+| <a href="https://github.com/rnrudwns123-design"><img src="https://github.com/rnrudwns123-design.png" width="80" title="구경준"></a> | . | <a href="https://www.notion.so/Daily-2fc0ddb4d3a880f19759c6baf4217b11?source=copy_link"><img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white"></a> |
+| <a href="https://github.com/sfun1993-bit"><img src="https://github.com/sfun1993-bit.png" width="80" title="서정언"></a> | . | <a href="https://www.notion.so/Daily-2fc0ddb4d3a880d2b1fbc148b9c236d0?source=copy_link"><img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white"></a> |
 
 
 ## 🛠️ Tools and Technologies
