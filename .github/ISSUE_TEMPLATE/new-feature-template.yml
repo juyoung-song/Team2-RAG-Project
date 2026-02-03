@@ -1,0 +1,63 @@
+name: "🚀 New Feature Request"
+description: "Suggest a new feature or enhancement for the project."
+labels: ["Type: Enhancement", "Priority: Medium", "Status: Pending"]
+body:
+  - type: checkboxes
+    id: no-duplicate-feature
+    attributes:
+      label: "⚠️ Please check for similar feature requests"
+      description: "비슷한 기능이 이미 제안된 적이 없는지 확인해 주세요."
+      options:
+        - label: "이전에 제안된 [기능 요청](https://github.com/boostcampaitech7/level4-nlp-finalproject-hackathon-nlp-06-lv3/issues?q=+is%3Aissue+label%3A%22Type%3A+Enhancement%22+) 중 중복되는 것이 없습니다."
+          required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: "🏗️ 관련 컴포넌트"
+      description: "이 기능이 프로젝트의 어느 부분에 해당하나요?"
+      options:
+        - Data Loader
+        - Embedding / Vector DB
+        - Retriever (검색)
+        - Generator (LLM)
+        - UI / UX
+        - Infrastructure / CI/CD
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: "📄 기능 설명"
+      description: "제안하는 기능의 목적과 세부 내용을 설명해주세요."
+      placeholder: "예: 사용자가 개인 계정을 생성하고 로그인할 수 있도록 하기 위해 사용자 인증 기능을 추가하고자 합니다."
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature-benefits
+    attributes:
+      label: "🎯 기능 도입의 이점"
+      description: "이 기능이 프로젝트에 어떤 이점을 줄 수 있는지 설명해주세요."
+      placeholder: "예: 로그인 기능을 통해 사용자 맞춤 설정이 가능해져서 사용자 경험이 향상됩니다."
+    validations:
+      required: true
+
+  - type: textarea
+    id: potential-issues
+    attributes:
+      label: "⚠️ 잠재적 문제"
+      description: "이 기능 도입 시 발생할 수 있는 잠재적 문제나 어려움이 있다면 적어주세요."
+      placeholder: "예: 로그인 기능 추가 시 데이터 보안 및 개인 정보 보호 고려 필요."
+    validations:
+      required: false
+
+  - type: textarea
+    id: related-features
+    attributes:
+      label: "🔗 관련 이슈"
+      description: "이 기능과 관련된 이전 이슈가 있다면 이슈 번호를 간단히 언급해주세요."
+      placeholder: "예: 관련 기능 요청 - #23, #24"
+    validations:
+      required: false
