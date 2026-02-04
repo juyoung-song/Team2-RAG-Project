@@ -1,0 +1,26 @@
+# LangChain & LLM Orchestration
+langchain
+langchain_community
+langchain_openai
+
+# Transformers
+transformers==4.57.3
+torch==2.7.1
+torchvision==0.22.1
+
+# Data Processing & ML Utilities
+pandas
+scikit-learn
+datasets
+
+# Parameter-Efficient Fine-Tuning (PEFT)
+peft==0.17.1
+
+# Environment & Config
+python-dotenv
+
+# Vector Store
+faiss-cpu
+
+# Visualization & Analysis
+matplotlib
