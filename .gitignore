@@ -212,6 +212,7 @@ __marimo__/
 *.pdf
 data_list.csv
 data_list.xlsx
+
 out/
 tmp_hwp5html/
 
