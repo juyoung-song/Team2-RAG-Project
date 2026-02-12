@@ -184,6 +184,16 @@ def normalize_toc(md_text: str) -> str:
     cut_e = start + last.end()
     return md_text[:cut_s] + toc_block + md_text[cut_e:]
 
+def fix_broken_numbers(text: str) -> str:
+    # 1) 숫자 사이에 개행이 끼어든 경우: 90\n0,000 -> 900,000
+    text = re.sub(r"(\d)\s*\n\s*(\d)", r"\1\2", text)
+
+    # 2) 숫자 사이에 불필요한 공백이 끼어든 경우: 90 0,000 -> 900,000
+    #    (너무 공격적이면 위험하므로, 뒤가 'd,ddd' 패턴인 경우만)
+    text = re.sub(r"(\d)\s+(\d,\d{3})", r"\1\2", text)
+
+    return text
+
 
 def clean_rfp_markdown(md_text: str) -> str:
     text = md_text
@@ -224,6 +234,9 @@ def clean_rfp_markdown(md_text: str) -> str:
     text = re.sub(r"[ \t]{2,}", " ", text)
     text = re.sub(r"\n{3,}", "\n\n", text)
     text = re.sub(r"\n\s+\n", "\n\n", text).strip()
+
+    text = fix_broken_numbers(text)
+    
     return text
 
 
