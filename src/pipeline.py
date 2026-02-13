@@ -47,9 +47,6 @@ CHUNK_JSONL_PATHS = [
     ROOT / "out" / "chunks_merged_hwp_pdf_cs600_ov100.jsonl",
 ]
 
-_BM25_DOCS = None
-_BM25 = None
-
 
 load_dotenv(ROOT / ".env")
 
@@ -140,11 +137,38 @@ def get_dense_retriever():
         search_kwargs={"k": DENSE_K, "fetch_k": MMR_FETCH_K, "lambda_mult": MMR_LAMBDA},
     )
 
-@lru_cache(maxsize=1)
-def get_hybrid_retriever():
+# @lru_cache(maxsize=1)
+# def get_hybrid_retriever():
+#     sparse = get_bm25_retriever()
+#     dense = get_dense_retriever()
+#     return EnsembleRetriever(retrievers=[sparse, dense], weights=[0.6, 0.4])
+
+def _rrf_merge(docs_a, docs_b, k=80, rrf_k=60):
+    # docs_a, docs_b는 각각 "이미 정렬된" 리스트라고 가정
+    scores = {}
+    def key(d):
+        m = getattr(d, "metadata", None) or {}
+        return (m.get("doc_id") or m.get("document_id") or m.get("id"), m.get("chunk") or m.get("chunk_id") or m.get("chunk_index"), (d.page_content or "")[:80])
+
+    for rank, d in enumerate(docs_a, 1):
+        scores[key(d)] = scores.get(key(d), 0.0) + 1.0 / (rrf_k + rank)
+    for rank, d in enumerate(docs_b, 1):
+        scores[key(d)] = scores.get(key(d), 0.0) + 1.0 / (rrf_k + rank)
+
+    # 대표 doc 객체 저장
+    rep = {}
+    for d in docs_a + docs_b:
+        rep.setdefault(key(d), d)
+
+    merged = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+    return [rep[k_] for k_, _ in merged[:k]]
+
+def get_hybrid_docs(question: str):
     sparse = get_bm25_retriever()
     dense = get_dense_retriever()
-    return EnsembleRetriever(retrievers=[sparse, dense], weights=[0.6, 0.4])
+    sparse_docs = sparse.invoke(question)  # k=BM25_K 권장
+    dense_docs  = dense.invoke(question)   # k=DENSE_K 권장
+    return _rrf_merge(sparse_docs, dense_docs, k=60)
 
 # -----------------------
 # 4) rerank_docs: 후보 → 재정렬 → top_n
@@ -162,16 +186,12 @@ def _filter_by_top_docid(docs, top_n=2):
 
 
 def rerank_docs(question: str):
-    base_retriever = get_hybrid_retriever()
-    docs = base_retriever.invoke(question)
+    # ✅ RRF 하이브리드 사용
+    docs = get_hybrid_docs(question)
     if not docs:
         return []
 
-    # ✅ 문서 혼합 줄이기
-    docs = _filter_by_top_docid(docs, top_n=2)
-
     ranker = get_ranker()
-
     passages = []
     for i, d in enumerate(docs):
         meta = normalize_meta(getattr(d, "metadata", None))
@@ -179,10 +199,12 @@ def rerank_docs(question: str):
         passages.append({"id": i, "text": header + "\n" + (d.page_content or "")})
 
     ranked = ranker.rerank(RerankRequest(query=question, passages=passages))
-
     top_ids = [r["id"] for r in ranked[:RERANK_TOP_N]]
-    return [docs[i] for i in top_ids]
+    top_docs = [docs[i] for i in top_ids]
 
+    # (선택) rerank 이후에만 doc_id 스코프
+    top_docs = _filter_by_top_docid(top_docs, top_n=2)
+    return top_docs
 
 
 # -----------------------
