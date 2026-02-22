@@ -1,7 +1,9 @@
 # LangChain & LLM Orchestration
-langchain
+langchain==0.2.14
+langchain-core==0.2.33
 langchain_community
-langchain_openai
+langchain_openai==0.1.22
+langfuse==2.30.0
 
 # Transformers
 transformers==4.57.3

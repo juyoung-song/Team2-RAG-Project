@@ -210,6 +210,7 @@ __marimo__/
 *.hwp
 *.docx
 *.pdf
+*.jsonl
 data_list.csv
 data_list.xlsx
 
