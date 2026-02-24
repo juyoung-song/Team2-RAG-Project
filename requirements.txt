@@ -10,6 +10,9 @@ transformers==4.57.3
 torch==2.7.1
 torchvision==0.22.1
 
+#Parsers
+docling==0.1.0
+
 # Data Processing & ML Utilities
 pandas
 scikit-learn
@@ -26,3 +29,6 @@ faiss-cpu
 
 # Visualization & Analysis
 matplotlib
+
+# Retriever
+rank-bm25
