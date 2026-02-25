@@ -1,6 +1,6 @@
 from langchain_openai import ChatOpenAI
 
-llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
+llm = ChatOpenAI(model_name="gpt-5-mini", temperature=0)
 
 judge_prompt = """
 다음은 RAG 모델이 생성한 답변과, 참조 문서(Context)입니다.

@@ -84,15 +84,28 @@ def get_rag_chain():
     chain = (
         RunnableLambda(_build_inputs)
         | RunnableBranch(
-            (RunnableLambda(_has_docs), llm_chain),
+            (_has_docs, llm_chain),
             RunnableLambda(lambda _: NO_EVIDENCE),
-        )
+)
     )
     return chain
 
+def get_db_cached():
+    return get_db()
 
 # 외부에서 바로 import해서 쓰는 “고정 이름”
-rag_chain = get_rag_chain()
 
-# (선택) 디버그/검증용 노출
-db = get_db()
+# 노트북/런타임에서 dotenv 로드 후 생성하는 것이 안전하므로 즉시 생성은 피함
+# 필요하면 get_rag_chain() 또는 ask()를 사용하세요.
+# rag_chain = get_rag_chain()
+
+def ask(chain, question: str, use_langfuse: bool = False) -> str:
+    """
+    평가/노트북에서 공통으로 쓰는 얇은 래퍼.
+    - chain이 None이면 내부에서 lazy 생성(get_rag_chain)
+    - use_langfuse는 현재 generator가 미지원이므로 무시(호환성 유지용)
+    """
+    if chain is None:
+        chain = get_rag_chain()
+    out = chain.invoke(question)
+    return out if isinstance(out, str) else str(out)
