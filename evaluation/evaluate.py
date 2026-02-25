@@ -288,7 +288,7 @@ def run_evaluation():
 
     print("🧐 RAG 시스템 평가를 시작합니다...\n")
 
-    DEBUG_N = 30  # 필요 시 0으로
+    DEBUG_N = 0  # 필요 시 0으로
 
     # 3) 답변 생성 및 채점
     for i, (q, gold) in enumerate(zip(questions, answer_key), 1):
