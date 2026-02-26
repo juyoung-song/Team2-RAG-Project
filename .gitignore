@@ -205,3 +205,17 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# 데이터 관련
+*.hwp
+*.docx
+*.pdf
+*.jsonl
+data_list.csv
+data_list.xlsx
+*.jpeg
+*.jpg
+*.png
+
+# macOS 시스템 특정 파일 제외
+.DS_Store
