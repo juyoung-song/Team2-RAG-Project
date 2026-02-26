@@ -1,6 +1,5 @@
 from langchain_openai import ChatOpenAI
-
-llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
+from langchain_core.prompts import PromptTemplate
 
 judge_prompt = """
 당신은 RAG 시스템이 생성한 답변의 정확성을 평가하는 엄격하고 공정한 심사위원입니다.
@@ -23,9 +22,10 @@ judge_prompt = """
 위 평가 기준에 따라 판단한 후, 절대로 이유나 부연 설명을 덧붙이지 말고 오직 '1', '0.5', '0' 중 하나의 숫자만 출력하세요.
 """
 
-from langchain_core.prompts import PromptTemplate
 judge_template = PromptTemplate.from_template(judge_prompt)
 
+
 def evaluate_answer(query, answer, context):
+    llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
     judge = llm.invoke(judge_template.format(query=query, answer=answer, context=context))
     return float(judge.content.strip())
