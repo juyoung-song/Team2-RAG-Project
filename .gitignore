@@ -213,6 +213,9 @@ __marimo__/
 *.jsonl
 data_list.csv
 data_list.xlsx
+*.jpeg
+*.jpg
+*.png
 
 # macOS 시스템 특정 파일 제외
 .DS_Store
