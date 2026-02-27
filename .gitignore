@@ -218,4 +218,4 @@ data_list.xlsx
 *.png
 
 # macOS 시스템 특정 파일 제외
-.DS_Store
+.DS_Storedata/vectorstore/
