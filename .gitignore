@@ -230,4 +230,4 @@ data_list.xlsx
 >>>>>>> 91fe1d10c17f2f81be1f16b3ed75a9600fc3842f
 
 # macOS 시스템 특정 파일 제외
-.DS_Store
+.DS_Storedata/vectorstore/

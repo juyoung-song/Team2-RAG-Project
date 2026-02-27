@@ -4,27 +4,34 @@ import unicodedata
 from pathlib import Path
 
 import pandas as pd
-from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_core.documents import Document
+from parsers.parser_text_advaned import parse_texts
 
 
 def parse_pdfs_to_jsonl(pdf_dir, parsed_dir):
     """data/pdfs -> data/parsed (page 단위 jsonl 저장)"""
+    from collections import defaultdict
+
     pdf_dir = Path(pdf_dir)
     parsed_dir = Path(parsed_dir)
     parsed_dir.mkdir(parents=True, exist_ok=True)
 
-    for pdf_path in sorted(pdf_dir.glob("*.pdf")):
-        docs = PyMuPDFLoader(str(pdf_path)).load()
-        out_path = parsed_dir / f"{pdf_path.stem}.jsonl"
+    by_file = defaultdict(list)
+    docs = parse_texts(pdf_dir)
+    for d in docs:
+        source_file = d.metadata.get("source_file")
+        if not source_file:
+            continue
+        by_file[source_file].append({
+            "source_file": source_file,
+            "page": d.metadata.get("page"),
+            "text": d.page_content,
+        })
 
+    for source_file, rows in sorted(by_file.items()):
+        out_path = parsed_dir / f"{Path(source_file).stem}.jsonl"
         with out_path.open("w", encoding="utf-8") as f:
-            for d in docs:
-                row = {
-                    "source_file": pdf_path.name,
-                    "page": d.metadata.get("page"),
-                    "text": d.page_content,
-                }
+            for row in rows:
                 f.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 
@@ -108,9 +115,15 @@ def load_all_parsed(
     # ── 1. 세 가지 파싱 결과 수집 ────────────────────────
     all_records = []
 
-    # 텍스트: data/parsed/*.jsonl (table·image·merged 하위폴더 제외)
-    for fp in sorted(parsed_dir.glob("*.jsonl")):
-        all_records.extend(_read_jsonl(fp, "text"))
+    # 텍스트: data/parsed/text/*.jsonl
+    text_dir = parsed_dir / "text"
+    if text_dir.exists():
+        for fp in sorted(text_dir.glob("*.jsonl")):
+            all_records.extend(_read_jsonl(fp, "text"))
+    else:
+        # 이전 방식 호환 (data/parsed/*.jsonl)
+        for fp in sorted(parsed_dir.glob("*.jsonl")):
+            all_records.extend(_read_jsonl(fp, "text"))
 
     # 표
     for fp in sorted(table_dir.glob("*.jsonl")):
@@ -156,4 +169,3 @@ def load_all_parsed(
     print(f"load_all_parsed 완료: 텍스트 {text_n} / 표 {table_n} / 이미지 {image_n} = 총 {len(documents)}개")
 
     return documents
-

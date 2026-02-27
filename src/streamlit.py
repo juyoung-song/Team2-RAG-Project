@@ -24,8 +24,8 @@ from src.retriever import build_hybrid_retriever
 load_dotenv()
 
 # ── 경로 설정 ────────────────────────────────────────────
-DB_PATH  = str(PROJECT_ROOT / "data" / "vectorstore" / "faiss_openai")
-PKL_PATH = str(PROJECT_ROOT / "data" / "vectorstore" / "split_documents.pkl")
+DB_PATH  = str(PROJECT_ROOT / "data" / "vectorstore" / "faiss_advanced")
+PKL_PATH = str(PROJECT_ROOT / "data" / "vectorstore" / "split_documents_advanced.pkl")
 
 # ── 대화 내역 동기화 함수 ────────────────────────────────
 def sync_messages():
