@@ -212,6 +212,30 @@ __marimo__/
 *.pdf
 data_list.csv
 data_list.xlsx
+*.png
+*.bmp
+*.jpg
+*.JPG
+*.JPEG
+*.jpeg
+*.WMF
+*.wmf
+
 
 # macOS 시스템 특정 파일 제외
 .DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Extract / report artifacts
+data/_report_resolved/
+data/**/*.csv
+data/**/*.xlsx
+data/**/*.json
+data/**/*.txt
+
+# generated
+data/chunks/
+data/text/
