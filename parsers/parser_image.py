@@ -59,17 +59,30 @@ def parse_images(pdf_dir: Path = PDF_DIR) -> list[Document]:
                 # 이미지 파일 저장
                 (out_dir / f"page{page_num+1}_img{idx+1}.{ext}").write_bytes(img_bytes)
 
-                # Vision 요약
+                # Vision 요약 (SSL 등 일시 오류 시 최대 3회 재시도)
                 mime = "image/png" if ext == "png" else "image/jpeg"
                 b64 = base64.b64encode(img_bytes).decode()
-                response = client.chat.completions.create(
-                    model="gpt-5-mini",
-                    messages=[{"role": "user", "content": [
-                        {"type": "text", "text": VISION_PROMPT},
-                        {"type": "image_url", "image_url": {"url": f"data:{mime};base64,{b64}"}},
-                    ]}],
-                    max_completion_tokens=2000,
-                )
+
+                response = None
+                for attempt in range(3):
+                    try:
+                        response = client.chat.completions.create(
+                            model="gpt-5-mini",
+                            messages=[{"role": "user", "content": [
+                                {"type": "text", "text": VISION_PROMPT},
+                                {"type": "image_url", "image_url": {"url": f"data:{mime};base64,{b64}"}},
+                            ]}],
+                            max_completion_tokens=4000,
+                        )
+                        break  # 성공 시 재시도 루프 탈출
+                    except Exception as e:
+                        print(f"    [재시도 {attempt+1}/3] 오류: {e}")
+                        if attempt == 2:
+                            print(f"    → 이미지 skip (page{page_num+1}_img{idx+1})")
+
+                if response is None:
+                    continue  # 3회 모두 실패 시 해당 이미지 건너뜀
+
 
                 pdf_docs.append(Document(
                     page_content=response.choices[0].message.content.strip(),
