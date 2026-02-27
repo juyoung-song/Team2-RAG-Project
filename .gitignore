@@ -210,8 +210,10 @@ __marimo__/
 *.hwp
 *.docx
 *.pdf
+*.jsonl
 data_list.csv
 data_list.xlsx
+<<<<<<< HEAD
 *.png
 *.bmp
 *.jpg
@@ -221,6 +223,11 @@ data_list.xlsx
 *.JPEG
 *.WMF
    
+=======
+*.jpeg
+*.jpg
+*.png
+>>>>>>> 91fe1d10c17f2f81be1f16b3ed75a9600fc3842f
 
 # macOS 시스템 특정 파일 제외
 .DS_Store
