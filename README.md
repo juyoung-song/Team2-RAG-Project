@@ -20,7 +20,8 @@
 
 ## 📑 최종 보고서
 
-> 추가 예정
+> [Team2_RAG_보고서.pdf](https://github.com/user-attachments/files/25600246/Team2_RAG_.pdf)
+
 
 ---
 
