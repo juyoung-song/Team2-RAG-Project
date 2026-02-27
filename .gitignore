@@ -212,6 +212,15 @@ __marimo__/
 *.pdf
 data_list.csv
 data_list.xlsx
+*.png
+*.bmp
+*.jpg
+*.jpeg
+*.wmf
+*.JPG 
+*.JPEG
+*.WMF
+   
 
 # macOS 시스템 특정 파일 제외
 .DS_Store
